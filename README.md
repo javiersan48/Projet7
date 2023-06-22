@@ -3,11 +3,11 @@
 L’entreprise « Prêt à dépenser » nous emploie pour développer un modèle de scoring évaluant la probabilité de défaut de paiement d’un client. Un dashboard doit être fourni pour permettre aux conseillers bancaires de demander l’avis de l’algorithme et d’en expliquer les prédictions.
 
 ## Les données
-Le dossier Jeux de données originaux contient les jeux de données fournis par l’entreprise.  
+Le jeux de données originaux sont disponibles à cette adresse : https://www.kaggle.com/c/home-credit-default-risk/data   
 Le dossier Données Dashboard contient les données pour le dashboard.
 
 ## Modélisation
-Modèle.pkl est le modèle de classification retenu pour répondre à la problématique avec son seuil optimal.  
+LightGBM_with_threshold.pkl est le modèle de classification retenu pour répondre à la problématique avec son seuil optimal.  
 Modélisation.ipynb est le notebook démontrant la préparation des données et la modélisation.
 
 ## Déploiement
