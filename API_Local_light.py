@@ -139,5 +139,5 @@ async def get_probabilities_by_client(num_client: str, credentials: HTTPBasicCre
     return JSONResponse(content={"probabilities": probabilities}, media_type="application/json")
 
     
-if __name__ == '__main__':
-   main()
+
+   
