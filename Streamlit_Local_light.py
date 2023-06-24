@@ -14,7 +14,7 @@ from streamlit.components import v1 as components
 from io import BytesIO
 import warnings
 
-logo_image = Image.open("./Données Dashboard/logo_pret_a_depenser.png")
+logo_image = Image.open("./Données Dashboard/logo_pret_a_depenser.PNG")
 st.set_page_config(
     page_title="EMPRUNT - AIDE A LA DECISION",
     page_icon= logo_image,
@@ -214,7 +214,7 @@ def main():
             )
 
 
-        dreamcredit_image = Image.open("./Données Dashboard/dreamcredit.png")
+        dreamcredit_image = Image.open("./Données Dashboard/dreamcredit.PNG")
         col2.info("**Réalisez vos rêves**")
         col2.image(dreamcredit_image, use_column_width=True)
 
