@@ -57,7 +57,7 @@ def convert_columns_to_numeric(df):
 @app.get("/data_explore")
 def read_explore_csv(credentials: HTTPBasicCredentials = Depends(security)):
     verify_credentials(credentials)
-    df = pd.read_csv(r'P7_Data_Dashboard_explore.csv')
+    df = pd.read_csv(r'Données Dashboard/P7_Data_Dashboard_explore.csv')
     df = df.fillna('') 
     data = df.to_dict(orient="records")
     return data
@@ -65,7 +65,7 @@ def read_explore_csv(credentials: HTTPBasicCredentials = Depends(security)):
 @app.get("/data_predict")
 def read_predict_csv(credentials: HTTPBasicCredentials = Depends(security)):
     verify_credentials(credentials)
-    df = pd.read_csv(r'P7_Data_Dashboard_predict.csv')
+    df = pd.read_csv(r'Données Dashboard/P7_Data_Dashboard_predict.csv')
     df = df.fillna('') 
     data = df.to_dict(orient="records")
     return data
@@ -74,12 +74,12 @@ def read_predict_csv(credentials: HTTPBasicCredentials = Depends(security)):
 
 
 
-model_path = r'LightGBM_with_threshold.pkl'
+model_path = r'Données Dashboard/LightGBM_with_threshold.pkl'
 with open(model_path, 'rb') as f:
     model_with_threshold = pickle.load(f)
     model = model_with_threshold['model']
 
-df2 = pd.read_csv(r'P7_Data_Dashboard_predict.csv')
+df2 = pd.read_csv(r'Données Dashboard/P7_Data_Dashboard_predict.csv')
 df2.drop(columns=['Unnamed: 0'], inplace=True)
 df2 = df2.fillna('') 
 df2.set_index('SKIDCURR', inplace=True)
