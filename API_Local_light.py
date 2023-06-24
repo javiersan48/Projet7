@@ -44,7 +44,7 @@ def convert_columns_to_numeric(df):
 # @app.get("/data_explore")
 # def charger_donnees_csv():
 #     try:
-#         with open(r'C:\Users\jerom\Desktop\DataZ\P7_Data_Dashboard_explore.csv') as f:
+#         with open(r'P7_Data_Dashboard_explore.csv') as f:
 #             reader = csv.DictReader(f)
 #             data = list(reader)
 #             json_data = json.dumps(data, default=json_handler)
@@ -57,7 +57,7 @@ def convert_columns_to_numeric(df):
 @app.get("/data_explore")
 def read_explore_csv(credentials: HTTPBasicCredentials = Depends(security)):
     verify_credentials(credentials)
-    df = pd.read_csv(r'C:\Users\jerom\Desktop\P7_Data_Dashboard_explore.csv')
+    df = pd.read_csv(r'P7_Data_Dashboard_explore.csv')
     df = df.fillna('') 
     data = df.to_dict(orient="records")
     return data
@@ -65,7 +65,7 @@ def read_explore_csv(credentials: HTTPBasicCredentials = Depends(security)):
 @app.get("/data_predict")
 def read_predict_csv(credentials: HTTPBasicCredentials = Depends(security)):
     verify_credentials(credentials)
-    df = pd.read_csv(r'C:\Users\jerom\Desktop\P7_Data_Dashboard_predict.csv')
+    df = pd.read_csv(r'P7_Data_Dashboard_predict.csv')
     df = df.fillna('') 
     data = df.to_dict(orient="records")
     return data
@@ -74,12 +74,12 @@ def read_predict_csv(credentials: HTTPBasicCredentials = Depends(security)):
 
 
 
-model_path = r'C:\Users\jerom\Documents\Notebooks\Openclassroom\P7\LightGBM_with_threshold.pkl'
+model_path = r'LightGBM_with_threshold.pkl'
 with open(model_path, 'rb') as f:
     model_with_threshold = pickle.load(f)
     model = model_with_threshold['model']
 
-df2 = pd.read_csv(r'C:\Users\jerom\Desktop\P7_Data_Dashboard_predict.csv')
+df2 = pd.read_csv(r'P7_Data_Dashboard_predict.csv')
 df2.drop(columns=['Unnamed: 0'], inplace=True)
 df2 = df2.fillna('') 
 df2.set_index('SKIDCURR', inplace=True)
@@ -140,7 +140,4 @@ async def get_probabilities_by_client(num_client: str, credentials: HTTPBasicCre
 
     
 if __name__ == '__main__':
-    uvicorn.run("API Local:app", host='127.0.0.1', port=8000)
-    #uvicorn app:app --reload
-    #cd C:\Users\jerom\Desktop\chamsedine
-    #uvicorn API_Local_light:app --reload
+   main()
