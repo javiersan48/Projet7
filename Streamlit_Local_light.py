@@ -14,7 +14,7 @@ from streamlit.components import v1 as components
 from io import BytesIO
 import warnings
 
-logo_image = Image.open(r"C:\Users\jerom\Pictures\logo_pret_a_depenser.png")
+logo_image = Image.open(r"./Données Dashboard/logo_pret_a_depenser.png")
 st.set_page_config(
     page_title="EMPRUNT - AIDE A LA DECISION",
     page_icon= logo_image,
@@ -45,12 +45,12 @@ def normalize_score(probability):
 
 
 
-url = "http://localhost:8000/data_explore"
+url = "https://projet7api.streamlit.app/data_explore"
 response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
 raw_data = pd.DataFrame(response.json())
 
-data_url = "http://localhost:8000/data_predict"
+data_url = "https://projet7api.streamlit.app/data_predict"
 response = requests.get(data_url, auth=("Openclassroom", "Jerome_S"))
 data = pd.DataFrame.from_records(response.json())
 data.set_index('SKIDCURR', inplace=True)
@@ -87,7 +87,7 @@ def jauge(valeur):
  
 
 def global_explaination():
-    url = "http://localhost:8000/global_shap_values"
+    url = "https://projet7api.streamlit.app/global_shap_values"
     response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
     shap_values = json.loads(response.content)["shap_values"]
@@ -102,7 +102,7 @@ def global_explaination():
     st.pyplot(plt.gcf())
 
 def explication_locale(numéro_client):
-    url = f"http://localhost:8000/local_shap_values/{numéro_client}"
+    url = f"https://projet7api.streamlit.app/local_shap_values/{numéro_client}"
     response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
     data_temp = json.loads(response.content)
@@ -188,7 +188,7 @@ def main():
         st.info("""Nous finançons vos rêves. Voiture, maison, mariage... Nous vous offrons à travers des emprunts bancaires la possibilité de financer vos projets. Nos conseillers seront toujours à l'écoute et vous aideront au mieux dans votre développement.""")
 
         st.markdown("""---""")
-        cover_image = Image.open(r"C:\Users\jerom\Pictures\PhotoJ.png")
+        cover_image = Image.open(r"./Données Dashboard/PhotoJ.png")
         
         st.sidebar.image(cover_image, use_column_width=True)
 
@@ -205,7 +205,7 @@ def main():
     with tab1.markdown("**Project Lifecycle**"):
         col1, col2 = st.columns(2)
         col1.info("**Comment fonctionne l'algorithme**")
-        LightGBM_image = Image.open(r"C:\Users\jerom\Pictures\LightGBM.png")
+        LightGBM_image = Image.open(r"./Données Dashboard/LightGBM.png")
         
         col1.image(LightGBM_image, use_column_width=True)
         col1.markdown(
@@ -214,7 +214,7 @@ def main():
             )
 
 
-        dreamcredit_image = Image.open(r"C:\Users\jerom\Pictures\dreamcredit.png")
+        dreamcredit_image = Image.open(r"./Données Dashboard/dreamcredit.png")
         col2.info("**Réalisez vos rêves**")
         col2.image(dreamcredit_image, use_column_width=True)
 
@@ -233,7 +233,7 @@ def main():
             
                     user = data[data.index == int(user_id_value)]
 
-                    url = f"http://localhost:8000/probabilities/{user_id_value}"
+                    url = f"https://projet7api.streamlit.app/probabilities/{user_id_value}"
                     response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
                     probabilities = json.loads(response.content)["probabilities"]
@@ -407,7 +407,7 @@ def main():
 
 
     with tab4.subheader("Etat du Data Drift"):
-        with open(r"C:\Users\jerom\Documents\Notebooks\Openclassroom\P7/DataDrift.html", "r", encoding="utf-8") as report:
+        with open(r"./Données Dashboard/DataDrift.html", "r", encoding="utf-8") as report:
             html_content = report.read()
         components.html(html_content, height=1500)
 
