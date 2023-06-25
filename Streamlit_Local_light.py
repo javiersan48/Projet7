@@ -188,7 +188,7 @@ def main():
         st.info("""Nous finançons vos rêves. Voiture, maison, mariage... Nous vous offrons à travers des emprunts bancaires la possibilité de financer vos projets. Nos conseillers seront toujours à l'écoute et vous aideront au mieux dans votre développement.""")
 
         st.markdown("""---""")
-        cover_image = Image.open("./Données Dashboard/PhotoJ.png")
+        cover_image = Image.open("./Données Dashboard/PhotoJ.PNG")
         
         st.sidebar.image(cover_image, use_column_width=True)
 
