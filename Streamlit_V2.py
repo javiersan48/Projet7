@@ -14,7 +14,7 @@ from streamlit.components import v1 as components
 from io import BytesIO
 import warnings
 
-logo_image = Image.open("logo_pret_a_depenser.PNG")
+logo_image = Image.open("./Données Dashboard/logo_pret_a_depenser.PNG")
 st.set_page_config(
     page_title="EMPRUNT - AIDE A LA DECISION",
     page_icon= logo_image,
@@ -200,7 +200,7 @@ def main():
         st.info("""Nous finançons vos rêves. Voiture, maison, mariage... Nous vous offrons à travers des emprunts bancaires la possibilité de financer vos projets. Nos conseillers seront toujours à l'écoute et vous aideront au mieux dans votre développement.""")
 
         st.markdown("""---""")
-        cover_image = Image.open("PhotoJ.PNG")
+        cover_image = Image.open("./Données Dashboard/.PNG")
         
         st.sidebar.image(cover_image, use_column_width=True)
 
@@ -217,7 +217,7 @@ def main():
     with tab1.markdown("**Project Lifecycle**"):
         col1, col2 = st.columns(2)
         col1.info("**Comment fonctionne l'algorithme**")
-        LightGBM_image = Image.open("LightGBM.png")
+        LightGBM_image = Image.open("./Données Dashboard/LightGBM.png")
         
         col1.image(LightGBM_image, use_column_width=True)
         col1.markdown(
@@ -226,7 +226,7 @@ def main():
             )
 
 
-        dreamcredit_image = Image.open("dreamcredit.PNG")
+        dreamcredit_image = Image.open("./Données Dashboard/dreamcredit.PNG")
         col2.info("**Réalisez vos rêves**")
         col2.image(dreamcredit_image, use_column_width=True)
 
@@ -419,7 +419,7 @@ def main():
 
 
     with tab4.subheader("Etat du Data Drift"):
-        with open("DataDrift.html", "r", encoding="utf-8") as report:
+        with open("./Données Dashboard/DataDrift.html", "r", encoding="utf-8") as report:
             html_content = report.read()
         components.html(html_content, height=1500)
 
