@@ -45,12 +45,12 @@ def normalize_score(probability):
 
 
 
-url = "https://projet7api.streamlit.app/data_explore"
+url = "https://fastapi-heroku4488-1a2b2a16c86a.herokuapp.com/data_explore"
 response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
 raw_data = pd.DataFrame(response.json())
 
-data_url = "https://projet7api.streamlit.app/data_predict"
+data_url = "https://fastapi-heroku4488-1a2b2a16c86a.herokuapp.com/data_predict"
 response = requests.get(data_url, auth=("Openclassroom", "Jerome_S"))
 data = pd.DataFrame.from_records(response.json())
 data.set_index('SKIDCURR', inplace=True)
@@ -87,7 +87,7 @@ def jauge(valeur):
  
 
 def global_explaination():
-    url = "https://projet7api.streamlit.app/global_shap_values"
+    url = "https://fastapi-heroku4488-1a2b2a16c86a.herokuapp.com/global_shap_values"
     response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
     shap_values = json.loads(response.content)["shap_values"]
@@ -102,7 +102,7 @@ def global_explaination():
     st.pyplot(plt.gcf())
 
 def explication_locale(numéro_client):
-    url = f"https://projet7api.streamlit.app/local_shap_values/{numéro_client}"
+    url = f"https://fastapi-heroku4488-1a2b2a16c86a.herokuapp.com/local_shap_values/{numéro_client}"
     response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
     data_temp = json.loads(response.content)
@@ -233,7 +233,7 @@ def main():
             
                     user = data[data.index == int(user_id_value)]
 
-                    url = f"https://projet7api.streamlit.app/probabilities/{user_id_value}"
+                    url = f"https://fastapi-heroku4488-1a2b2a16c86a.herokuapp.com/probabilities/{user_id_value}"
                     response = requests.get(url, auth=("Openclassroom", "Jerome_S"))
 
                     probabilities = json.loads(response.content)["probabilities"]
