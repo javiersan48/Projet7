@@ -11,8 +11,8 @@ LightGBM_with_threshold.pkl est le modèle de classification retenu pour répond
 Modélisation.ipynb est le notebook démontrant la préparation des données et la modélisation.
 
 ## Déploiement
-Streamlit.py est le code du tableau de bord déployé. Le lien du dashboard est :  
-API.py est le code de l’API FastAPI transmettant les prédictions.
+Streamlit_Local_light.py est le code du tableau de bord déployé. Le lien du dashboard est :  https://p7dash.streamlit.app/
+API_Local_light.py est le code de l’API FastAPI transmettant les prédictions. Le déploiement est fait avec Heroku sur la branche API de ce projet.
 
 ## Documentation
 Note méthodologique explique la démarche utilisée  
